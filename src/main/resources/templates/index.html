@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/web_socket/css/bootstrap.min.css">
+    <script src="/web_socket/js/jquery.min.js"></script>
+    <script src="/web_socket/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background: #ffffc4;height: max-content;">
+<div style="
+
+    margin-top: 12%;
+    background: #e9c6cd;
+    color: #577052;
+    border-radius: 58px;
+    border: 7px solid;
+    display: flex;
+    height: 500px;
+
+    ">
+
+    <div style="    margin: auto;">
+
+
+
+        <form role="form">
+            <div class="form-group">
+                <label for="name">你的名称</label>
+                <input type="text" class="form-control"   id="myName">
+            </div>
+            <div class="form-group">
+                <label for="name">他/她的名称</label>
+                <input type="text" class="form-control" id="friendName">
+            </div>
+
+            <div class="form-group">
+                <input type="button" onclick="goto_sudu()" value="数独" class="btn btn-primary">
+                <input type="button" onclick="goto_gobang()" value="五子棋" class="btn btn-primary" style="
+    margin-left: 10px;
+">
+            </div>
+
+        </form>
+
+
+
+
+    </div>
+    <div class="container" style="       margin: auto;
+    flex: 0.2;
+    display: flex;">
+        <div class="row">
+            <img src="/web_socket/img/ryz.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+        </div>
+        <div class="row">
+            <img src="/web_socket/img/cpy4.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<script>
+    var goto_sudu = function () {
+        var result = check();
+        if (result === true) {
+            var myName = $('#myName').val();
+            var friendName = $('#friendName').val();
+            window.location = '../main/index/?myName=' + myName + '&friendName=' + friendName;
+        }
+
+    };
+    var goto_gobang = function () {
+        var result = check();
+        if (result === true) {
+            var myName = $('#myName').val();
+            var friendName = $('#friendName').val();
+            window.location = '../main/gobang/?myName=' + myName + '&friendName=' + friendName;
+        }
+    };
+    var check = function () {
+        var myName = $('#myName').val();
+        var friendName = $('#friendName').val();
+        if (!myName) {
+            showToast('我的名称不能为空', 500);
+            return false;
+        }
+        if (!friendName) {
+            showToast('他/她的名称不能为空', 500);
+            return false;
+        }
+        return true;
+    };
+    var showToast = function (msg, duration) {
+        duration = isNaN(duration) ? 3000 : duration;
+        var m = document.createElement('div');
+        m.innerHTML = msg;
+        m.style.cssText = "    width: 23%;\n" +
+                "    min-width: 10px;\n" +
+                "    background: rgb(0, 0, 0);\n" +
+                "    opacity: 1;\n" +
+                "    height: auto;\n" +
+                "    min-height: 30px;\n" +
+                "    color: rgb(240 246 255);\n" +
+                "    line-height: 30px;\n" +
+                "    text-align: center;\n" +
+                "    border-radius: 4px;\n" +
+                "    position: fixed;\n" +
+                "    top: 10%;\n" +
+                "    left: 37%;\n" +
+                "    z-index: 999999;\n" +
+                "    font-size: 25px;";
+        document.body.appendChild(m);
+        setTimeout(function () {
+            var d = 0.5;
+            m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+            m.style.opacity = '0';
+            setTimeout(function () {
+                document.body.removeChild(m)
+            }, d * 1000);
+        }, duration);
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head> 
+    <meta
+             charset="utf-8">
+     
+    <title>数独</title> 
+</head>
+
+<style type="text/css">
+    .numAll {
+        /*width: 500px;*/
+        height: 50px;
+        background: #6ef43663;
+        /*border: 1px solid red;
+        margin-left: 28px;*/
+        display: flex;
+
+    }
+
+    .num {
+        background: #dac2d2fa;
+        flex: 1;
+        margin: 2px;
+        text-align: center;
+        padding: 0px;
+        font-size: 36px;
+        color: #d412ae;
+    }
+
+    .numAll-t {
+        display: flex;
+        height: 25px;
+    }
+
+    .num-t {
+        flex: 1;
+        margin: 2px;
+        text-align: center;
+    }
+
+    .mode {
+        flex: 1;
+        height: 30px;
+        text-align: center;
+        background: antiquewhite;
+        border: 2px solid;
+        margin: 2px;
+        line-height: 28px;
+    }
+</style>
+
+<body style="background-image: url(/web_socket/img/cyp3.jpg);">
+
+<div style="text-align: center;font-size: 50px;color: #ddf109;margin: auto;width: 800px;" id="title"></div>
+<div style="width: 800px;margin: auto;background: #e9c6cd;color: #577052;border-radius: 58px;border: 7px solid;display: flex;">
+    <div>
+        <div style="margin-left: 35px;"><h2>当前操作人：<span id="playerName"></span>&nbsp&nbsp&nbsp&nbsp用时：<span
+                id="userTime">0</span>秒</h2></div>
+        <div style="margin-left: 35px;"><h3>失败次数：<span id="failTimes">0</span>&nbsp&nbsp&nbsp&nbsp总耗时：<span
+                id="userTimeAll">0</span>秒</h3></div>
+
+    </div>
+
+    <div style="margin: auto;margin-right: 8px;">
+        <img src="/web_socket/img/ryz.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+        <img src="/web_socket/img/cpy4.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+
+    </div>
+
+
+</div>
+
+<div style="display: flex;width: 800px;margin: auto;margin-top: 10px;background:#e2d7d6;border: 8px solid;
+    color: #577052;border-radius: 27px;padding: 20px;">
+
+    <div style="flex: 1;">
+
+        <canvas id="myCanvas" width="450" height="450" style="border:1px solid #d3d3d3;">
+            您的浏览器不支持 HTML5 canvas 标签。
+        </canvas>
+        <div id="numAll" class="numAll">
+            <div class="num">1</div>
+            <div class="num">2</div>
+            <div class="num">3</div>
+            <div class="num">4</div>
+            <div class="num">5</div>
+            <div class="num">6</div>
+            <div class="num">7</div>
+            <div class="num">8</div>
+            <div class="num">9</div>
+
+        </div>
+
+        <div class="numAll-t">
+            <div class="num-t" id="num-t-1"></div>
+            <div class="num-t" id="num-t-2"></div>
+            <div class="num-t" id="num-t-3"></div>
+            <div class="num-t" id="num-t-4"></div>
+            <div class="num-t" id="num-t-5"></div>
+            <div class="num-t" id="num-t-6"></div>
+            <div class="num-t" id="num-t-7"></div>
+            <div class="num-t" id="num-t-8"></div>
+            <div class="num-t" id="num-t-9"></div>
+
+        </div>
+
+
+    </div>
+    <div style="flex: 1;border: 1px solid;margin-left: 50px;">
+
+        <div style="display: flex;flex: 1;margin-top: 4px;">
+
+            <div class="mode" onclick="genData(20)">简易</div>
+            <div class="mode" onclick="genData(30)">一般</div>
+            <div class="mode" onclick="genData(50)">困难</div>
+
+        </div>
+
+
+        <div style="border: 1px solid;height: 418px;background: #c8ffe2;">
+            <textarea rows="10" cols="30" style="width: 278px;height: 407px;margin: 4px;background-color: #f0f6ff;color: #577052;font-size: 22px;
+            font-family: sans-serif;background-image: url(/web_socket/img/lt.jpg);    background-size: 50% 50%;"
+                      readonly id="messageArea"></textarea>
+        </div>
+        <div style="border: 1px solid;height: 50px;background: #c8ffe2;margin-top: 4px;">
+            <input type="text" name="firstname" style="height: 30px;width: 200px;margin-top: 6px;margin-left: 4px;"
+                   id="message">
+            <button style="width: 67px;height: 35px;" onclick="sendMsgButton()">发送</button>
+        </div>
+
+    </div>
+
+</div>
+
+<img id="pq1" src="/web_socket/img/pq1.jpg" width="0" height="0" hidden>
+<img id="pq2" src="/web_socket/img/pq2.jpg" width="0" height="0" hidden>
+<img id="pq3" src="/web_socket/img/pq3.jpg" width="0" height="0" hidden>
+
+<script th:inline="javascript">
+    var myName = [[${myName}]];
+    var friendName = [[${friendName}]];
+</script>
+
+
+</body>
+
+<script src="/web_socket/js/sudu.js"></script>
+</html>

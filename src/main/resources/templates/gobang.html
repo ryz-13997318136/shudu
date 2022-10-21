@@ -1,0 +1,157 @@
+<html>
+<head></head>
+<body style="background-image: url(/web_socket/img/cyp3.jpg);">&nbsp;
+<meta &nbsp;charset="utf-8">
+&nbsp;
+<title>五子棋</title>&nbsp;
+
+
+<style type="text/css">
+
+    /* Chrome, Safari, Opera */
+    @-webkit-keyframes mymove {
+        50% {color: red;}
+    }
+
+    /* Standard syntax */
+    @keyframes mymove {
+        50% {color: red }
+    }
+
+</style>
+
+
+<div style="text-align: center;font-size: 50px;margin: auto;width: 800px;">
+    <span id="title1" style="color: #d4d4d4;"></span><span id="xin" style="color: #d4d4d4;"> ♡ </span><span id="title2" style="color: #d4d4d4;"></span></div>
+<div style="width: 800px;margin: auto;background: #e9c6cd;color: #577052;border-radius: 58px;border: 7px solid;display: flex;">
+    <div>
+        <div style="margin-left: 35px;"><h2>当前操作人：<span id="playerName"></span>&nbsp;&nbsp;&nbsp;&nbsp;用时：<span
+                id="userTime">0</span>秒</h2></div>
+        <div style="margin-left: 35px;"><h3><span id="result_msg">尚未开始游戏</span></h3></div>
+
+    </div>
+
+    <div style="margin: auto;margin-right: 8px;">
+        <img src="/web_socket/img/ryz.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+        <img src="/web_socket/img/cpy4.jpg" style="width: 100px;height:100px;border-radius: 50px;" border="1px">
+
+    </div>
+
+
+</div>
+
+<div style="display: flex;width: 900px;margin: auto;margin-top: 10px;background:#e2d7d6;border: 8px solid;
+    color: #577052;border-radius: 27px;padding: 20px;">
+
+    <div style="flex: 1;">
+
+        <canvas id="myCanvas" width="650" height="650" style="border:1px solid #d3d3d3;">
+            您的浏览器不支持 HTML5 canvas 标签。
+        </canvas>
+
+
+    </div>
+    <div style="flex: 1;border: 1px solid;margin-left: 20px;">
+
+
+        <div style="
+    margin-top: 170px;
+">
+            <div style="
+    margin-left: 40%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    color: #577052;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: 10px;
+" onclick="move(1)"><h1>W</h1>
+            </div>
+            <div style="
+    display: flex;
+">
+                <div style="
+    margin-left: 8%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    color: #577052;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: 10px;
+" onclick="move(2)"><h1>A</h1>
+                </div>
+                <div style="
+    margin-left: 37%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    color: #577052;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: 10px;
+" onclick="move(3)"><h1>D</h1>
+                </div>
+            </div>
+
+            <div style="
+    margin-left: 40%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    color: #577052;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: ;
+    line-height: 10px;
+" onclick="move(4)"><h1>S</h1>
+            </div>
+        </div>
+
+        <div style="margin-top: 46px;">
+            <div style="
+    margin: 20px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: 10px;
+" onclick="sure()"><h1>确定</h1></div>
+            <div style="
+    margin: 20px;
+    height: 50px;
+    text-align: center;
+    background: #e9c6cd;
+    border-radius: 8px;
+    border: 3px solid;
+    line-height: 12px;
+    margin-top: 131px;
+" onclick="resetButton()"><h1>开始对局</h1></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<img id="pq1" src="/web_socket/img/pq1.jpg" width="0" height="0" hidden="">
+<img id="pq2" src="/web_socket/img/pq2.jpg" width="0" height="0" hidden="">
+<img id="pq3" src="/web_socket/img/pq3.jpg" width="0" height="0" hidden="">
+
+<script>
+    var myName = '[[${myName}]]';
+    var friendName = '[[${friendName}]]';
+</script>
+
+
+<script src="/web_socket/js/gobang.js"></script>
+
+
+</body>
+</html>

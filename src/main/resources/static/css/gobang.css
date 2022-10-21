@@ -1,0 +1,9 @@
+/* Chrome, Safari, Opera */
+@-webkit-keyframes mymove {
+    50% {color: red;}
+}
+
+/* Standard syntax */
+@keyframes mymove {
+    50% {color: red }
+}
