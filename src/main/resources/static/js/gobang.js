@@ -169,11 +169,15 @@ var sure = function () {
     if (!(lastSelect.x && lastSelect.y)) {
         return;
     }
+    var x = lastSelect.x, y = lastSelect.y;
+    if(doNotClear[x+'-'+y]){
+        showToast('已经有棋子，不能重复落子', 300);
+        return;
+    }
     if (canPlay === false) {
         showToast('请等待' + friendName + '落子完成', 500);
         return;
     }
-    var x = lastSelect.x, y = lastSelect.y;
     ctx.strokeStyle = myColor;
     ctx.beginPath();
     ctx.arc(x, y, 20, 0, 2 * Math.PI);
